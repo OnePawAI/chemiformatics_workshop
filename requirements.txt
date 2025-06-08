@@ -1,0 +1,9 @@
+rdkit-pypi
+scikit-learn
+matplotlib
+pandas
+numpy
+seaborn
+nglview
+biopython
+

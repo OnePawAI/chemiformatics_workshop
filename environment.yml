@@ -1,0 +1,16 @@
+name: cheminfo_env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - rdkit
+  - scikit-learn
+  - matplotlib
+  - pandas
+  - numpy
+  - seaborn
+  - nglview
+  - biopython
+  - jupyterlab
+  - notebook
+
