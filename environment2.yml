@@ -1,0 +1,26 @@
+name: cheminfo_env2
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - rdkit
+  - scikit-learn
+  - matplotlib
+  - pandas
+  - numpy
+  - seaborn
+  - nglview
+  - biopython
+  - jupyterlab
+  - notebook
+  - pdbfixer
+  - openmm
+  - openmmforcefields
+  - mdanalysis
+  - molscrub
+  - openbabel
+  - pip
+  - pip:
+      - py3Dmol
+      - useful_rdkit_utils
+      - mols2grid 
