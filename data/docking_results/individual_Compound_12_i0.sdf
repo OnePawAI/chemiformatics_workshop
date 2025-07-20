@@ -82,13 +82,13 @@ M  END
 0.764619
 
 >  <CNNaffinity>  (1) 
-7.065591
+7.06559
 
 >  <CNN_VS>  (1) 
-5.402487
+5.402486
 
 >  <CNNaffinity_variance>  (1) 
-0.458909
+0.458908
 
 $$$$
 Compound_12_i0
@@ -175,13 +175,13 @@ M  END
 0.735773
 
 >  <CNNaffinity>  (2) 
-6.955336
+6.955337
 
 >  <CNN_VS>  (2) 
-5.117548
+5.11755
 
 >  <CNNaffinity_variance>  (2) 
-0.098386
+0.098387
 
 $$$$
 Compound_12_i0
@@ -268,13 +268,13 @@ M  END
 0.615528
 
 >  <CNNaffinity>  (3) 
-6.917796
+6.917795
 
 >  <CNN_VS>  (3) 
-4.258097
+4.258098
 
 >  <CNNaffinity_variance>  (3) 
-0.597606
+0.597604
 
 $$$$
 Compound_12_i0
@@ -361,10 +361,10 @@ M  END
 0.613069
 
 >  <CNNaffinity>  (4) 
-6.659876
+6.659875
 
 >  <CNN_VS>  (4) 
-4.082965
+4.082964
 
 >  <CNNaffinity_variance>  (4) 
 0.090788
@@ -457,7 +457,7 @@ M  END
 6.999388
 
 >  <CNN_VS>  (5) 
-3.690723
+3.690724
 
 >  <CNNaffinity_variance>  (5) 
 0.059682
@@ -547,13 +547,13 @@ M  END
 0.454894
 
 >  <CNNaffinity>  (6) 
-6.811048
+6.811047
 
 >  <CNN_VS>  (6) 
-3.098307
+3.098306
 
 >  <CNNaffinity_variance>  (6) 
-0.465547
+0.465548
 
 $$$$
 Compound_12_i0
@@ -640,10 +640,10 @@ M  END
 0.37308
 
 >  <CNNaffinity>  (7) 
-6.36681
+6.366811
 
 >  <CNN_VS>  (7) 
-2.375332
+2.37533
 
 >  <CNNaffinity_variance>  (7) 
 0.261795
@@ -736,7 +736,7 @@ M  END
 6.535595
 
 >  <CNN_VS>  (8) 
-2.379405
+2.379406
 
 >  <CNNaffinity_variance>  (8) 
 0.352349
@@ -826,10 +826,10 @@ M  END
 0.351178
 
 >  <CNNaffinity>  (9) 
-6.782375
+6.782374
 
 >  <CNN_VS>  (9) 
-2.381822
+2.381821
 
 >  <CNNaffinity_variance>  (9) 
 0.155712
