@@ -1,101 +1,145 @@
+# Rutgers Cheminformatics Workshop (Jupyter Edition)
 
-# Rutgers Cheminformatics Workshop
+This repository is an adapted version of the original **Cheminformatics-Driven Molecular Docking Workshop**, organized by the **Institute for Quantitative Biomedicine (IQB)** in collaboration with the **Protein Data Bank (PDB)**.
 
-This repository contains a collection of cheminformatics projects completed as part of the Rutgers Cheminformatics Crash Course. The notebooks cover SMILES parsing, molecular descriptor calculation, QSAR modeling, and protein–ligand interaction analysis.
+Each notebook was written by experts in the cheminformatics and molecular modeling community:
 
-## 📚 Notebooks
+- **Notebook 1**: *Paul Craig (RIT Professor)* and *Jessica Nash (Software Scientist)*
+- **Notebook 2**: *Pat Walters*
+- **Notebook 3**: *Levi Naden (Software Scientist, MolSSI)* — with contributions from *Jessica Nash* and *Pat Walters*
+- **Notebook 4**: *Jessica Nash (MolSSI)* — with feedback from *Pat Walters* and *David Koes*
 
-- `01_Cheminfo_crash_course.ipynb`  
-  - SMILES parsing and visualization
-  - Fingerprints and similarity analysis
-  - Substructure search
+---
 
-- `02_Cheminfo_crash_course.ipynb`  
-  - Molecular descriptor calculation using RDKit
-  - Feature correlation analysis
+## 🛠️ About This Version
 
-- `03_Cheminfo_crash_course.ipynb`  
-  - QSAR modeling (Random Forest Regression)
-  - Model evaluation (R², MAE, plots)
+This version of the workshop has been adapted to run entirely on **local Jupyter Notebooks** rather than Google Colab. Key enhancements include:
 
-- `04_Cheminfo_crash_course.ipynb`  
-  - Protein–ligand interaction visualization
-  - Pocket analysis using PDB structures
+- 📦 A single `environment.yml` file for reproducible Conda environment setup
+- 🐳 Use of **Docker** for GNINA docking (Notebook 4), enabling cross-platform support
+- ⚡ Faster execution by avoiding repeated dependency installation
+- 🔄 Improved flexibility for use on personal machines or HPC systems
 
-## Environment setup
+> This adaptation makes the workshop more scalable and user-friendly for cheminformatics practitioners working with larger datasets or integrating GNINA workflows locally.
 
-To create the environment:
+---
 
-```bash
-conda env create -f environment.yml
-conda activate cheminfo_env
-```
+## 🐳 Docker Installation (for GNINA)
 
-To register the environment with Jupyter (to make it appear in the Kernel list):
+> GNINA is used in Notebook 04 for protein–ligand docking/visualization. You must have Docker installed to use GNINA.
+
+### ✅ Ubuntu / Debian
 
 ```bash
-python -m ipykernel install --user --name=cheminfo_env --display-name "Python (cheminfo_env)"
-```
+sudo apt update
+sudo apt install -y ca-certificates curl gnupg lsb-release
 
-To run the notebooks:
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+  sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+  https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+# (Optional) Run Docker without sudo:
+sudo usermod -aG docker $USER
+newgrp docker
+````
+
+### ✅ macOS (Apple M1/M2/M3 or Intel)
+
+1. Download Docker Desktop: [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)
+2. Install and launch Docker Desktop
+3. Ensure Docker daemon is running (check in the menu bar)
+
+### ✅ Windows 10/11
+
+1. Download Docker Desktop: [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)
+2. Enable **WSL2 backend** (required for Linux containers)
+3. Restart after installation
+4. Launch Docker Desktop and ensure it's running
+
+> After installing Docker, test with:
 
 ```bash
-jupyter notebook
+docker run hello-world
 ```
 
-## How to Run Locally
+---
 
-To run this project locally, you first need to set up the environment as described in the [Environment setup](#environment-setup) section.
+## ⚙️ How to Run Locally
 
-Then, follow these steps:
-
-1. Clone this repo:
+### 1. Clone this repository
 
 ```bash
 git clone https://github.com/OnePawAI/rutgers-cheminformatics.git
 cd rutgers-cheminformatics
 ```
 
-2. Install required packages (if using pip — not recommended for RDKit):
+### 2. Set up the Conda environment
+
+The provided `environment.yml` file contains all necessary dependencies.
 
 ```bash
-pip install -r requirements.txt
+conda env create -f environment.yml
+conda activate cheminfo_env
 ```
 
-👉 Note: For RDKit-based workflows, using the provided `environment.yml` with conda is strongly recommended due to RDKit's C++ dependencies.
+### 3. Register the Conda environment in Jupyter
 
-3. Run the notebooks:
+```bash
+python -m ipykernel install --user --name=cheminfo_env --display-name "Python (cheminfo_env)"
+```
+
+Now the environment will show up in Jupyter as `"Python (cheminfo_env)"`.
+
+### 4. Launch Jupyter Notebook
 
 ```bash
 jupyter notebook
 ```
 
-## Notes on Scalability
+> 👉 **Note:** For RDKit workflows, using Conda is strongly recommended due to RDKit’s C++ dependencies.
 
-This workshop was originally designed to run on small datasets (e.g., nsaids.csv) that fit well within Google Colab's free tier limits. For such small-scale cheminformatics tasks, Colab is sufficient.
+---
 
-However, real-world cheminformatics workflows often involve large datasets (millions of molecules), large descriptor matrices, and more intensive machine learning tasks (e.g., cross-validation, hyperparameter tuning).
+## 🚀 Notebooks Overview
 
-In such cases, Google Colab's free tier presents limitations:
-- Limited RAM (~12 GB)
-- Session timeouts (up to 12 hours)
-- Slow file I/O for large molecule datasets
-- Unreliable GPU access
+* `01_Cheminfo_crash_course.ipynb`
 
-To address these limitations, this project also provides an `environment.yml` file to set up a local conda environment. Running these notebooks locally (e.g., on an Apple M3 Mac) allows for:
-- Larger memory capacity
-- No session timeouts
-- Faster disk I/O for big datasets
-- More reliable and cost-free execution for descriptor-based ML models
+  * SMILES parsing, visualization, substructure search
+* `02_Cheminfo_crash_course.ipynb`
 
-While this project focuses on traditional cheminformatics ML (Random Forest, QSAR), deep learning approaches (e.g., GNNs) may still require dedicated GPU hardware.
+  * RDKit descriptors, correlation analysis
+* `03_Cheminfo_crash_course.ipynb`
 
-By running locally, this project can scale to larger datasets beyond what is practical in Colab free tier.
+  * QSAR modeling with Random Forest
+* `04_Cheminfo_crash_course.ipynb`
 
-## Requirements
+  * Protein–ligand docking and visualization (requires Docker + GNINA)
 
-See `requirements.txt` and `environment.yml` for the full package list.
+---
 
-## License
+## ⚖️ Notes on Scalability
 
-MIT License.
+Google Colab is convenient for small-scale cheminformatics tasks, but local execution provides:
+
+* More memory and no timeouts
+* Faster file I/O
+* More control for large datasets
+* Compatibility with tools like Docker and GNINA
+
+For deep learning (e.g., GNNs), GPU hardware is still recommended.
+
+---
+
+## 📜 License
+
+MIT License
+
